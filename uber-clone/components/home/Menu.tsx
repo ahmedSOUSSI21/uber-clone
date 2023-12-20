@@ -16,7 +16,8 @@ const Menu: React.FC<MenuProps> = ({ activeTab, setActiveTab }) => {
                     activeTab === 'home' && styles.activeTouchable,
                 ]}
             >
-                <Image source={require("../../assets/home.png")} style={{ width: 30, height: 30 }} />
+                <Image source={require("../../assets/home.png")} style={styles.icon} />
+                <Text style={styles.text}>Accueil</Text>
             </TouchableOpacity>
             <TouchableOpacity
                 onPress={() => setActiveTab('services')}
@@ -25,7 +26,8 @@ const Menu: React.FC<MenuProps> = ({ activeTab, setActiveTab }) => {
                     activeTab === 'services' && styles.activeTouchable,
                 ]}
             >
-                <Image source={require("../../assets/info.png")} style={{ width: 30, height: 30 }} />
+                <Image source={require("../../assets/info.png")} style={styles.icon} />
+                <Text style={styles.text}>Services</Text>
             </TouchableOpacity>
             <TouchableOpacity
                 onPress={() => setActiveTab('activity')}
@@ -34,7 +36,8 @@ const Menu: React.FC<MenuProps> = ({ activeTab, setActiveTab }) => {
                     activeTab === 'activity' && styles.activeTouchable,
                 ]}
             >
-                <Image source={require("../../assets/activity.png")} style={{ width: 30, height: 30 }} />
+                <Image source={require("../../assets/activity.png")} style={styles.icon} />
+                <Text style={styles.text}>Activités</Text>
             </TouchableOpacity>
             <TouchableOpacity
                 onPress={() => setActiveTab('profile')}
@@ -43,7 +46,8 @@ const Menu: React.FC<MenuProps> = ({ activeTab, setActiveTab }) => {
                     activeTab === 'profile' && styles.activeTouchable,
                 ]}
             >
-                <Image source={require("../../assets/profile.png")} style={{ width: 30, height: 30 }} />
+                <Image source={require("../../assets/profile.png")} style={styles.icon} />
+                <Text style={styles.text}>Profile</Text>
             </TouchableOpacity>
         </View>
     )
@@ -61,11 +65,23 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
     },
+    icon:{
+        width: 25, 
+        height: 25, 
+        marginBottom: 4
+    },
     touchable: {
         padding: 10,
         borderRadius: 30,
+        alignItems: 'center',
     },
     activeTouchable: {
         backgroundColor: 'gray',
     },
+    text:{ 
+        color: '#fff', 
+        fontWeight: 'bold', 
+        textAlign:"center", 
+        fontSize: 10
+    }
 })
