@@ -1,14 +1,23 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { ScrollView, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import SearchInput from './SearchInput'
 import Recent from './Recent'
 import Suggestions from './Suggestions'
+import More from './More'
+import Planification from './Planification'
+
 const Main = () => {
   return (
-    <View style={styles.container}>
-      <SearchInput/>
-      <Recent/>
-      <Suggestions/>
+    <View style={{ flex: 1 }}> 
+      <View style={styles.inputContainer}>
+        <SearchInput />
+      </View>
+      <ScrollView>
+        <Recent />
+        <Suggestions />
+        <More />
+        <Planification />
+      </ScrollView>
     </View>
   )
 }
@@ -16,12 +25,12 @@ const Main = () => {
 export default Main
 
 const styles = StyleSheet.create({
-    text:{
-        color: 'white',
-        textAlign: 'center'
-    }, 
-    container:{
-        paddingVertical: 10,
-        marginHorizontal: 20,
-    }
+  text: {
+    color: 'white',
+    textAlign: 'center'
+  },
+  inputContainer:{
+    paddingVertical: 10,
+    marginHorizontal: 20,
+  }
 })

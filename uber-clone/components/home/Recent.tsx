@@ -9,9 +9,9 @@ const Recent = () => {
             {
                 data.map((item, index) => {
                     return (
-                        <TouchableOpacity style={styles.block}>
+                        <TouchableOpacity key={index} style={styles.block}>
                             <Image source={require("../../assets/chronometer.png")} style={styles.image} />
-                            <View key={index}>
+                            <View>
                                 <Text style={styles.address}>{item.address}</Text>
                                 <Text style={styles.city}>{item.city}</Text>
                             </View>
