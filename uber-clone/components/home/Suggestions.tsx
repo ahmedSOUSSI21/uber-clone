@@ -1,12 +1,16 @@
 import { ScrollView, StyleSheet, Text, TouchableOpacity, View, Image } from 'react-native'
 import React from 'react'
 
-const Suggestions = () => {
+type Props = {
+    setActiveTab: Function
+}
+
+const Suggestions:React.FC<Props> = ({setActiveTab}) => {
     return (
         <View style={styles.container}>
             <View style={styles.suggestions}>
                 <Text style={styles.suggestionText}>Suggestions</Text>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={() => setActiveTab("services")}>
                     <Text style={styles.toutAfficherText}>Tout afficher</Text>
                 </TouchableOpacity>
             </View>

@@ -6,7 +6,11 @@ import Suggestions from './Suggestions'
 import More from './More'
 import Planification from './Planification'
 
-const Main = () => {
+type Props = {
+  setActiveTab: Function
+}
+
+const Main:React.FC<Props> = ({setActiveTab}) => {
   return (
     <View style={{ flex: 1 }}> 
       <View style={styles.inputContainer}>
@@ -14,7 +18,7 @@ const Main = () => {
       </View>
       <ScrollView>
         <Recent />
-        <Suggestions />
+        <Suggestions setActiveTab={setActiveTab}/>
         <More />
         <Planification />
       </ScrollView>
