@@ -6,22 +6,18 @@ import Services from '../components/services/Services'
 import Profile from '../components/profile/Profile'
 import Activity from '../components/activity/Activity'
 
+const tabData: { [key: string]: JSX.Element } = {
+    "home": <Main />,
+    "services": <Services />,
+    "activity": <Activity />,
+    "profile": <Profile />
+}
+
 const Home = () => {
     const [activeTab, setActiveTab] = React.useState('home' as string)
     return (
         <SafeAreaView style={styles.container}>
-            {
-                activeTab === 'home' && <Main />
-            }
-            {
-                activeTab === 'services' && <Services />
-            }
-            {
-                activeTab === 'activity' && <Activity />
-            }
-            {
-                activeTab === 'profile' && <Profile />    
-            }
+            {tabData[activeTab]}
             <Menu activeTab={activeTab} setActiveTab={setActiveTab}/>
         </SafeAreaView>
     )
