@@ -1,20 +1,16 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { ScrollView } from 'react-native'
+import Header from './Header'
+import List from './List'
 import React from 'react'
+
 
 const Services = () => {
   return (
-    <View style={styles.container}>
-      <Text style={{color:"white"}}>Services</Text>
-    </View>
+    <ScrollView>
+      <Header />
+      <List />
+    </ScrollView>
   )
 }
 
 export default Services
-
-const styles = StyleSheet.create({
-  container:{
-    flex:1,
-    justifyContent:"center",
-    alignItems:"center"
-  }
-})

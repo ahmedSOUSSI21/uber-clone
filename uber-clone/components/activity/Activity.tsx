@@ -1,20 +1,15 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { ScrollView } from 'react-native'
 import React from 'react'
-
+import Header from './Header'
+import List from './List'
 const Activity = () => {
   return (
-    <View style={styles.container}>
-      <Text style={{color:"white"}}>Activity</Text>
-    </View>
+    <ScrollView>
+      <Header/>
+      <List/>
+    </ScrollView>
   )
 }
 
 export default Activity
 
-const styles = StyleSheet.create({
-  container:{
-    flex:1,
-    justifyContent:"center",
-    alignItems:"center"
-  }
-})

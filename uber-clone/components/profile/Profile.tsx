@@ -1,10 +1,13 @@
-import { StyleSheet, Text, View, SafeAreaView } from 'react-native'
+import { StyleSheet, View, ScrollView } from 'react-native'
 import React from 'react'
+import Header from './Header'
 
 const Profile = () => {
   return (
     <View style={styles.container}>
-      <Text style={{color:"white"}}>Profile</Text>
+      <Header />
+      <ScrollView>
+      </ScrollView>
     </View>
   )
 }
@@ -12,9 +15,9 @@ const Profile = () => {
 export default Profile
 
 const styles = StyleSheet.create({
-  container:{
-    flex:1,
-    justifyContent:"center",
-    alignItems:"center"
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center"
   }
 })
