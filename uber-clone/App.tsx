@@ -10,7 +10,7 @@ const screenOptions = {
 }
 
 export default function App() {
-  const authenticated = true;
+  const authenticated = false;
 
   return (
     <NavigationContainer>
