@@ -1,11 +1,20 @@
 import { StyleSheet, Text, View, Image } from 'react-native'
 import React from 'react'
+import { auth } from '../../core/firebaseConfig'
+
+const username = () => {
+    let username = auth.currentUser?.email?.split("@")[0]
+    if ((username?.length ?? 0) > 12) {
+        username = username?.substring(0, 12) + "..."
+    }
+    return username
+}
 
 const Header = () => {
     return (
         <View style={styles.nameAndImageContainer}>
             <View style={styles.leftContainer}>
-                <Text style={styles.name}>Jean Dupont</Text>
+                <Text style={styles.name}>{username()}</Text>
                 <View style={styles.rating}>
                     <Image source={require("../../assets/star.png")} style={styles.star}/>
                     <Text style={styles.ratingtext}>4.5</Text>
