@@ -3,6 +3,7 @@ import { View, Text, ImageBackground, StyleSheet, TextInput, KeyboardAvoidingVie
 import SignInForm from '../components/Auth/SignInForm';
 import RegisterForm from '../components/Auth/RegisterForm';
 import Splash from '../components/splash/Splash';
+import ForgotPassword from '../components/Auth/ForgotPassword';
 
 const Auth = () => {
     const [activeTab, setActiveTab] = React.useState('splash' as string)
@@ -27,9 +28,13 @@ const Auth = () => {
                         <TouchableOpacity style={[styles.choice, activeTab=="register" && styles.choiceActive]} onPress={() => setActiveTab("register")}>
                             <Text style={styles.label}>Register</Text>
                         </TouchableOpacity>
+                        <TouchableOpacity style={[styles.choice, activeTab=="forget" && styles.choiceActive]} onPress={() => setActiveTab("forget")}>
+                            <Text style={styles.label}>Forgot password</Text>
+                        </TouchableOpacity>
                     </View>
                     {activeTab == "login" && <SignInForm />}
                     {activeTab == "register" && <RegisterForm />}
+                    {activeTab == "forget" && <ForgotPassword />}
                 </KeyboardAvoidingView>
             </View>
         </ImageBackground>
@@ -57,11 +62,11 @@ const styles = StyleSheet.create({
     },
     label: {
         color: 'gray',
-        fontSize: 18,
+        fontSize: 12,
         fontWeight: 'bold',
     },
     formContainer: {
-        width: 300,
+        width: 310,
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: 'rgba(255, 255, 255, 0.8)',

@@ -1,6 +1,7 @@
 import { StyleSheet, Text, TouchableOpacity, ActivityIndicator } from 'react-native'
 import {auth} from '../../core/firebaseConfig'
-import {createUserWithEmailAndPassword} from 'firebase/auth'
+import {sendPasswordResetEmail} from 'firebase/auth'
+
 import React from 'react'
 import Input from './Input'
 
@@ -8,15 +9,13 @@ const isEmailValid = (email: string) => {
     const re = /\S+@\S+\.\S+/
     return re.test(email)
 }
-    
-const RegisterForm = () => {
+
+const ForgotPassword = () => {
+
     const [email, setEmail] = React.useState('')
-    const [password, setPassword] = React.useState('')
-    const [repeatPassword, setRepeatPassword] = React.useState('')
     const [emailError, setEmailError] = React.useState('')
-    const [passwordError, setPasswordError] = React.useState('')
-    const [repeatPasswordError, setRepeatPasswordError] = React.useState('')
     const [loading, setLoading] = React.useState(false)
+    const [emailSent, setEmailSent] = React.useState(false)
 
     const handleSubmit = async () => {
         setLoading(true)
@@ -25,40 +24,33 @@ const RegisterForm = () => {
             setEmailError('Email is invalid')
             anyError = true
         }
-        if(password.length < 6){
-            setPasswordError('Password must be at least 6 characters long')
-            anyError = true
-        }
-        if(password !== repeatPassword){
-            setRepeatPasswordError('Passwords must match')
-            anyError = true
-        }
         if(anyError){
             setLoading(false)
             return;
         }
         try{
-            await createUserWithEmailAndPassword(auth, email, password)
+            await sendPasswordResetEmail(auth, email)
+            setEmailSent(true)
             setLoading(false)
-        }catch(e: any){
-            setPasswordError(e)
+        }
+        catch(e){
+            setEmailError('Email is not registered')
         }
     }
 
     return (
         <>
             <Input placeholder="Email" value={email} setValue={setEmail} setError={setEmailError} error={emailError}/>
-            <Input placeholder="Password" value={password} setValue={setPassword} setError={setPasswordError} error={passwordError} secureTextEntry/>
-            <Input placeholder="Repeat password" value={repeatPassword} setValue={setRepeatPassword} setError={setRepeatPasswordError} error={repeatPasswordError} secureTextEntry/>
             {loading && <ActivityIndicator size="large" color="#000"/>}
             <TouchableOpacity style={styles.button} onPress={async () => await handleSubmit()}>
-                <Text style={styles.buttonText}>Sign Up</Text>
+                <Text style={styles.buttonText}>Reset password</Text>
             </TouchableOpacity>
+            {emailSent && <Text style={styles.successText}>Email to reset password has been sent</Text>}
         </>
     )
 }
 
-export default RegisterForm
+export default ForgotPassword
 
 const styles = StyleSheet.create({
     button: {
@@ -75,4 +67,8 @@ const styles = StyleSheet.create({
         fontSize: 18,
         fontWeight: 'bold',
     },
+    successText: {
+        color: 'green',
+        marginBottom: 20,
+    }
 })

@@ -21,10 +21,6 @@ const SignInForm = () => {
     const handleSubmit = async () => {
         setLoading(true)
         let anyError = false;
-        if(!email){
-            setEmailError('Email is required')
-            anyError = true
-        }
         if(!isEmailValid(email)){
             setEmailError('Email is invalid')
             anyError = true
