@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, SafeAreaView } from 'react-native'
+import { StyleSheet, SafeAreaView } from 'react-native'
 import React from 'react'
 import Main from '../components/home/Main'
 import Menu from '../components/home/Menu'
@@ -33,6 +33,6 @@ const styles = StyleSheet.create({
     container: {
         backgroundColor: '#000',
         flex: 1,
-        justifyContent: 'space-between', // Add this line
+        justifyContent: 'space-between',
     }
 })
