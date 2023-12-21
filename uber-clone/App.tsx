@@ -2,6 +2,9 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Home from './screens/Home';
 import Auth from './screens/Auth';
+import { User, onAuthStateChanged } from 'firebase/auth';
+import { useEffect, useState } from 'react';
+import { auth } from './core/firebaseConfig';
 
 const Stack = createStackNavigator();
 
@@ -10,12 +13,20 @@ const screenOptions = {
 }
 
 export default function App() {
-  const authenticated = false;
+  const [user, setUser] = useState<User | null>(null)
+  
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      console.log(user)
+      setUser(user)
+    }
+    )
+  }, [])
 
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Auth" screenOptions={screenOptions}>
-        {authenticated ?
+        {user ?
           <>
             <Stack.Screen name="Home" component={Home} />
           </>
