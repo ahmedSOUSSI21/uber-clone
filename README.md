@@ -37,4 +37,5 @@ npm start
 ## Remarques
 Assurez-vous que votre téléphone et votre machine sont sur le même réseau Wi-Fi.
 En cas de problème, consultez la documentation Expo pour résoudre les problèmes courants : Expo Troubleshooting
-Merci d'utiliser l'application Uber-Clone ! N'hésitez pas à soumettre des problèmes ou des demandes d'amélioration.   
+
+### Merci d'utiliser l'application Uber-Clone ! N'hésitez pas à soumettre des problèmes ou des demandes d'amélioration.   
